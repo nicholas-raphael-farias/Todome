@@ -1,0 +1,17 @@
+services:
+  todome:
+    build:
+      context: ./todome
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./todome/src:/app/src
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
+  api:
+    build:
+      context: ./api
+      dockerfile: dev.Dockerfile
+    ports:
+      - "3000:3000"
